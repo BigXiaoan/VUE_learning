@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!--单选-->
+        <h2>谁将是2019赛季NBA常规赛MVP?</h2>
+        <p>你的预测是：{{mvp}}</p>
+        <select v-model="mvp">
+            <option value="库里">库里</option>
+            <option value="詹姆斯">詹姆斯</option>
+        </select>
+        <!--多选-->
+        <h2>谁能入选2019赛季NBA最佳防守阵容？</h2>
+        <p>你的预测是:{{allDefensiveTeam}}</p>
+        <!--multiple是表示多选-->
+        <select v-model="allDefensiveTeam" multiple>
+            <option value="维斯布鲁克">维斯布鲁克</option>
+            <option value="库里">库里</option>
+            <option value="詹姆斯">詹姆斯</option>
+        </select>
+    </div>
+
+    <script src="../../vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                mvp:'詹姆斯',
+                allDefensiveTeam:[]
+            }
+        })
+    </script>
+</body>
+</html>

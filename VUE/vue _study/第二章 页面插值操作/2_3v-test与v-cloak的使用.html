@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            /* 使用v-cloak指令并为该指令设置display：none的样式，二者结合使用表示在h2的Dom节点渲染完成之前不显示你好啊，{{message}},渲染完成之后显示你好啊，VUE */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--下面这样写会出现闪屏问题，在进入浏览器的那一瞬间，会看到{{message}}-->
+       <!-- <h2>你好啊，{{message}}</h2>  -->
+       <!--利用v-text解决问题，但它不支持{{}}语法,也失去了灵活性-->
+       <!-- <h2 v-text = 'message'></h2> -->
+       <!--下面这样写是不对的-->
+       <!-- <h2 v-text = '你好啊，message'></h2> -->
+
+
+       <!--使用v-cloak解决闪屏问题,这样既解决了闪屏问题，还保留了{{}}语法的灵活-->
+       <h2 v-cloak>你好啊 {{message}}</h2>
+    </div>
+    <script src="../../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好啊，VUE'
+            }
+        })
+    </script>
+</body>
+</html>

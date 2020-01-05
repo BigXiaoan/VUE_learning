@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!--
+            事件冒泡：事件从事件目标(target)开始，往上冒泡直到页面的最上一级标签。对于上面的例子，当我们点击div#child的时候，方法childMethod和parentMethod将先后被调用。
+            事件捕获：事件捕获模式与冒泡模式正好相反，事件从父元素向子元素传播。对于上面的例子，当我们点击div#parent的时候，方法parentMethod和childMethod将先后被调用。
+        -->
+
+        <!--
+            什么是html标签的默认行为
+            比如：<a>标签的默认行为是，实现跳转
+            比如：<input type = "submit"/>默认行为是提交表单
+        -->
+
+        
+        <div id="parent" @click = "parentMethod">
+            冒泡讲解：父元素
+            <!--子元素加上stop修饰符号之后，点击子元素div，只有childMethod方法被触发，parentMethod方法不会被触发。也就是阻止冒泡，不让其它节点执行-->
+            <div id="child" @click.stop = "childMethod">
+                冒泡讲解：子元素
+            </div>
+        </div>
+
+         <!--父元素加上self修饰符之后，点击子元素div，只有childMethod方法被触发，parentMethod方法不会被触发。
+        self修饰符，表示被该修饰符修饰的父元素不接收子元素的事件冒泡行为
+        -->
+        <div id="parent" @click.self = "parentMethod">
+            冒泡讲解：父元素
+           
+            <div id="child" @click = "childMethod">
+                冒泡讲解：子元素
+            </div>
+        </div>
+        <!--点击a连接会自动跳转，点击button也会跳转-->
+        <a href="http://www.zimug.com/">字母哥博客</a>
+        <button>按钮</button>
+        
+        <!--prevent修饰符，可以阻止一些html标签的默认行为，比如a标签-->
+        <!--让上面两个点击的时候执行其他方法-->
+        <!--加上prevent修饰符号之后，不会有a标签的默认跳转行为。而会调用childMethod方法。-->
+        <a href="http://www.zimug.com/" @click.prevent="childMethod">字母哥博客</a>
+        <!--修饰符号可以串联使用，.stop.prevent表示先阻止冒泡行为，后阻止a标签的默认跳转行为-->
+        <a href="http://www.zimug.com/" @click.stop.prevent="childMethod">字母哥博客</a>
+        <button>按钮</button>
+    </div>
+
+    <script src="../../vue.js"></script>
+    <script>
+        const app = new new Vue({
+            
+        })
+    </script>
+</body>
+</html>

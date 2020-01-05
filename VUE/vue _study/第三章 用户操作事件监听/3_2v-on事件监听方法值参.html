@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{count}}</h2>
+        <button v-on:click="incr(step,$event)">+</button>
+        <button v-on:click="decr(step,$event)">-</button>
+    </div>
+    <script src="../../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                count:0,
+                step:2
+            },
+            methods: {
+                incr(n){
+                    //相当于每次触发点击事件，就会将step = 2
+                    this.count = this.count + n
+                },
+                decr(n){
+                    this.count = this.count - n
+                }
+            }
+        })
+    </script>
+</body>
+</html>

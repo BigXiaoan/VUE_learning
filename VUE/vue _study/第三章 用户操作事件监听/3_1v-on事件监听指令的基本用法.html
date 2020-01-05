@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--不仅仅是监听点击事件，还可以监听鼠标经过，离开等等事件-->
+    <div id="app">
+        <h2>点击次数{{count}}</h2>
+        <!--相当于js中的鼠标点击事件，点一次就触发一次-->
+        <!-- <button v-on:click="count++">+</button>
+        <button v-on:click="count--">-</button> -->
+
+        <!--还可以用函数-->
+        <button v-on:click="iner">+</button>
+        <button v-on:click="dner">-</button>
+    </div>
+    
+    <script src="../../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                count:0
+            },
+            methods: {
+                iner(){
+                   this.count++
+                },
+                dner(){
+                    //this表示当前对象，用户点击到哪个按键就是哪个触发事件
+                    this.count--
+                }
+            }
+        })
+    </script>
+</body>
+</html>

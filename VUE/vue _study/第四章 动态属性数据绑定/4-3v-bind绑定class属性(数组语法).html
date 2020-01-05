@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .blue{
+            color: blue;
+        }
+        .red{
+            color: red;
+        }
+        .bold{
+            font-weight: 800;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:class="cssArray">{{message}}</div>
+        <button v-on:click="changeColor">换颜色</button>
+    </div>
+
+    <script src="../../../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好啊 VUE',
+                cssArray:['bold','blue']//默认为蓝色
+            },
+            methods: {
+                changeColor(){
+                    if(this.cssArray[1] !== 'blue'){
+                    //使用pop()和push方法操作数组，pop是把数组最后一个元素移除，
+                    //push是在数组尾部加入一个元素
+                        this.cssArray.pop();
+                        this.cssArray.push('blue');
+                    }else{
+                        this.cssArray.pop();
+                        this.cssArray.push('red');
+                    }
+                }
+            }
+            
+        })
+      
+    </script>
+</body>
+</html>

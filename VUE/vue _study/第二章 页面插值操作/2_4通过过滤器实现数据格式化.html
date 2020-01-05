@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--
+
+            VUE的过滤器的实现参考了linux的shell命令的管道的实现原理：即上一个命令的输出，是下一个命令的输入。
+            所以过滤器可以串接使用：{{数据 | 过滤器A | 过滤器B}}
+        -->
+        <h2 v-cloak>{{message}}</h2>
+        <h2 v-cloak>{{message|data-format('yyyy-mm-dd hh:mm:ss')}}</h2>
+    </div>
+    <script src="../../vue.js"></script>
+    <script>
+
+        //全局过滤器(定义一个用于做日期格式化的过滤器)
+        //过滤器一定要在VUE实例初始化之前注册
+        Vue.filter('data-format',function (input,pattern = '') {
+            //let是ES6中定义变量的语法，类似于var，但在块作用域方面有不同之处
+            let dt = new Date(input);
+            //获取年月日
+            let y = dt.getFullYear();
+            /*
+                使用ES6中的字符串新方法String.prototype.padStart(maxLength, fillString='') 或 String.prototype.padEnd(maxLength, fillString='')来填充字符串；
+            */
+            //padStart(2,'0')表示如果字符串长度不足2位，则左补0，补足到长度为2.
+            let m = (dt.getMonth()+1).toString().padStart(2,'0');
+            let d = dt.getDate().toString().padStart(2,'0');
+
+            //获取时分秒
+            let hh = dt.getHours().toString().padStart(2,'0');
+            let mm = dt.getMinutes().toString().padStart(2,'0');
+            let ss = dt.getSeconds().toString().padStart(2,'0');
+
+            if(pattern.toLowerCase() === 'yyyy-mm-dd'){
+                return `${y}-${m}-${d}`;
+            }else{
+                //ES6语法
+                return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+            }
+        })
+
+        const app =new Vue({
+            el:'#app',
+            data:{
+                message:new Date()
+            },
+            //这里使用私有局部过滤器，只能在当前VM对象对象控制的View区域进行使用
+            filters: {
+               /*
+               除了可以定义全局的过滤器，我们还可以定义私有过滤器。但是过滤器这种代码，类似于工具类，我们一般定义为全局的，让它在各个模块、组件里面都可以使用。
+
+               */
+                dataFormat:function (input,pattern = '') {
+                    let dt = new Date(input);
+                    //获取年月日
+                    let y = dt.getFullYear();
+                    /*
+                        使用ES6中的字符串新方法String.prototype.padStart(maxLength, fillString='') 或 String.prototype.padEnd(maxLength, fillString='')来填充字符串；
+                    */
+                    //padStart(2,'0')表示如果字符串长度不足2位，则左补0，补足到长度为2.
+                    let m = (dt.getMonth()+1).toString().padStart(2,'0');
+                    let d = dt.getDate().toString().padStart(2,'0');
+
+                    //获取时分秒
+                    let hh = dt.getHours().toString().padStart(2,'0');
+                    let mm = dt.getMinutes().toString().padStart(2,'0');
+                    let ss = dt.getSeconds().toString().padStart(2,'0');
+
+                    if(pattern.toLowerCase() === 'yyyy-mm-dd'){
+                        return `${y}-${m}-${d}`;
+                    }else{
+                        //ES6语法
+                        return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

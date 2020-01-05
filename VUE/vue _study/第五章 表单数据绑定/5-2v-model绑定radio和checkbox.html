@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <!--单选-->
+        <h2>谁将是2019赛季NBA常规赛MVP?</h2>
+        <p>你的预测是：{{mvp}}</p>
+        <label for="curry">库里</label>
+        <input type="radio" name="" id="curry" v-model="mvp" value="库里">
+        <label for="james">詹姆斯</label>
+        <input type="radio" name="" id="james" v-model="mvp" value="詹姆斯">
+
+        <!--多选-->
+
+        <h2>谁能入选2019赛季NBA最佳防守阵容？</h2>
+        <p>你的预测是:{{allDefensiveTeam}}</p>
+        <label for="james">詹姆斯
+            <input id="james" type="checkbox" v-model="allDefensiveTeam" value="詹姆斯">
+        </label>
+        <label for="howpingxie">维斯布鲁克
+            <input type="checkbox" name="" id="howpingxie" v-model="allDefensiveTeam" value="维斯布鲁克">
+        </label>
+        <label for="howard">霍华德
+            <input type="checkbox" name="" id="howard" v-model="allDefensiveTeam" value="霍华德">
+        </label>
+
+        <script src="../../vue.js"></script>
+        <script>
+            new Vue({
+                el:'#app',
+                data:{
+                    mvp:'库里',
+                    allDefensiveTeam:['詹姆斯']//给个默认值
+                }
+            })
+        </script>
+    </div>
+</body>
+</html>

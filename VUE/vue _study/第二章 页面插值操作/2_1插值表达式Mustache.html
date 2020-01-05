@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id = "app" style="background-color: pink;">
+        <!--mustache语法中，不仅仅可以直接写变量，也可以写简单的表达式-->
+        <h2 v-cloak>你好啊 {{message}}</h2>
+        <h2 v-cloak>{{firstname.length}}(使用'.'获取属性)</h2>
+        <h2 v-cloak>{{firstname+lastname}}(字符串拼接)</h2>
+        <h2 v-cloak>{{firstname+' ' + lastname}}(注意名字中间的空格)</h2>
+        <h2 v-cloak>{{firstname}} {{lastname}}(注意名字中间的空格)</h2>
+        <h2 v-cloak>{{age * 2}}(简单的算术表达式)</h2>
+        <h2 v-cloak>{{lastname == 'Curry' ? '真棒' : '还好'}}(三目运算)</h2>
+        <!--lastName.split('rr').reverse().join(',')的作用是将lastName字符串‘Curry’用‘rr’分割为数组['Cu','y'],然后数组倒序，并用逗号为分隔符号合并(join)字符串数组。-->
+        <h2 v-cloak>{{lastname.split('rr').reverse().join(',')}}(使用js函数)</h2>
+        <h2 v-cloak>{{customMethod(lastname)}}(使用自定义函数)</h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        const app = new  Vue({
+            el  : '#app',
+            data : {
+               message:'VUE',
+               firstname:'Stephen',
+               lastname:'Curry',
+               age:13
+            },
+            methods: {
+                customMethod(str){
+                    return str.split('rr').reverse().join(',')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

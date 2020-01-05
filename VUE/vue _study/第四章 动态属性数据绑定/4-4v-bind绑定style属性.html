@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2 v-bind:style="{color:'red','font-size':fontSize +'px'}">
+           {{message}}
+        </h2>
+        <button v-on:click="addFontSize">增大字号</button>
+        <button v-on:click="subFontSize">减小字号</button>
+    </div>
+
+    <script src="../../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'VUE',
+                fontSize:30
+            },
+            methods: {
+                addFontSize(){
+                    return this.fontSize++;
+                },
+                subFontSize(){
+                    return this.fontSize--;
+                }
+                
+            }
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+    如果我们想将html原样输出，就是用{{}}就可以了
+    如果我们希望浏览器解析html后展示，那就要使用到v-html了
+    -->
+    <div id="app" style="background-color: pink;">
+        <h2>{{zimug}}</h2>
+        <!--这里就相当于js/DOM对象.innerText/innerHTML设置html的内容-->
+        <h2 v-html="zimug"></h2>
+        <!--字母哥课堂讲的真不错，特别是{{Mustache}}插值表达式
+          让这段文字原样输出，不是交给浏览器做变量插值操作
+          我们用到v-pre
+        -->
+        <h2 v-pre>字母哥课堂讲的真不错，特别是{{Mustache}}插值表达式</h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        const app = new  Vue({
+            el:'#app',
+            data:{
+              zimug:'<a href="https://www.toutiao.com/c/user/55190581999/#mid=1640894370966536">今日头条-字母哥课堂</a>'
+            }
+            
+        })
+    </script>
+</body>
+</html>
