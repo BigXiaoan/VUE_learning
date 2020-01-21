@@ -20,14 +20,20 @@
     </script>
     <script>
         new Vue({
-// template ：类型为字符串。默认会将 template 值替换挂载元素（即 el 值对应的元素），
-// 并合并挂载元素和模板根节点的属性
-/*
+            /*
+            el ：类型为字符串，DOM 元素或函数。其作用是为实例提供挂载元素。一般来说我们会
+                使用 css 选择符，或者原生的 DOM 元素。例如 el:'#app'。在初始项中指定了 el，实例将立即
+                            进入编译过程*/
+                            
+           
+            // template ：类型为字符串。默认会将 template 值替换挂载元素（即 el 值对应的元素），
+            // 并合并挂载元素和模板根节点的属性
+            /*
             所以在页面在的实际html结构是
             <div class="tpl">
                 <p>This is a tpl from script tag</p>
             </div>
-*/
+                */
 
             el:'#app',
             template:'#tpl'

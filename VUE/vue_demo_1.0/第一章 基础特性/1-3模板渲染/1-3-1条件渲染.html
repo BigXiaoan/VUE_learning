@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--v-else 必须紧跟 v-if，不然该指令不起作用。-->
+        <div v-cloak v-if="yes">yes</div>
+        <div v-cloak v-else="no">no</div>
+        <!--
+            v-show 也可以搭配 v-else 使用，用法和 v-if 一致
+            v-show 元素的使用会渲染并保持在 DOM 中。v-show 只是切换元素
+            的 css 属性 display
+            当show为false时，显示为
+            <div id="app">
+                <div>no</div> 
+                <div style="display: none;">show</div>
+            </div>
+        -->
+        <div v-show="show">show</div>
+    </div>
+
+    <script src="../../../vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                yes:false,//当yes为true时，会显示yes,反之显示no
+                show:false
+            }
+        })
+    </script>
+</body>
+</html>

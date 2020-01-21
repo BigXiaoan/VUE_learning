@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>过滤与排序</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <template v-for="(book,index) in filterBooks">
+                <li>书名：{{book.name}}</li>
+                <li>作者：{{book.author}}</li>
+            </template>
+        </ul>
+
+        <ul>
+            <template v-for="(book,index) in sortBooks">
+                <li>书名：{{book.name}}</li>
+                <li>作者：{{book.author}}</li>
+            </template>
+        </ul>
+    </div>
+
+    <!-- 当你不想改变原数组，想通过一个数组的副本来做过滤或排序的显示时，可以使用计算属性
+    来返回过滤或排序后的数组 -->
+    <script src="../../../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                books:[
+                    {
+                        name:'《Vue.js实战》',
+                        author:'梁灏'
+                    },
+                    {
+                        name:'《JavaScript语言精粹》',
+                        author:'Douglas Crockford'
+                    },
+                    {
+                        name:'《JavaScript高级程序设计》',
+                        author:'Nicholas C.Zakas'
+                    }
+                ]
+                // 上例是把书名中包含 JavaScript 关键词的数据过滤出来，计算属性 filterBooks 依赖 books ，但
+                //是不会修改 books 。  
+            },
+            computed:{
+                filterBooks(){
+                    //在这里对books进行过滤
+                    return this.books.filter(function(item){
+                        return item.name.match(/JavaScript/);
+                    })
+                },
+                // 此基础上新加 个计算属性 sortedBooks ，按照书
+                // 名的长度由长到短进行排序：
+                sortBooks(){
+                    return this.books.sort(function(a,b){
+                        return a.name.length < b.name.length;
+                    });
+
+                }
+                //Vue.js 2.x 中废弃了 l.x 中内直的 limitBy filterBy orderBy 过滤器，统一改用计
+                // 算属性来实现。
+            }
+        
+        })  
+    </script>
+</body>
+</html>

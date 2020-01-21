@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-show用法</title>
+</head>
+<body>
+    <!-- v-show的用法与v-if基本一致，只不过v-show是改变元素的css属性display.当v-show表达式的值为false时，元素会隐藏，查看DOM结构会看到元素上加载了内联样式display:none -->
+
+    <div id="app">
+        <p v-show="status === 1">
+            当status为1时显示该行
+        </p>
+    </div>
+
+    <script src="../../../vue.js"></script>
+    <script>
+
+        // v-if v-show 具有类似的功能，不过 v-if 才是真正的条件渲染，它会根据表达式适当地销毁
+        // 或重建元素及绑定的事件或子组件。若表达式初始值为 false ，则 开始元素／组件并不会渲染，只
+        // 有当条件第 次变为真时才开始编译。
+    
+        // v-show 只是简单的 css 属性切换，无论条件真与否，都会被编译。相比之下， v-if 更适合
+        // 条件不经常改变的场景，因为它切换开销相对较大，而 v-show 适用于频繁切换条件。
+        const app = new Vue({
+            el:'#app',
+            data:{
+                status:2
+                // 渲染后的结果
+                // <p style="display: none 〉当 status 时显示该行 </p>
+                // v-show不能在<template>上使用
+            }
+        })
+    </script>
+</body>
+</html>

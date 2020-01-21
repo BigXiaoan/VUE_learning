@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        form{
+            width: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        Vue.js 为指令 v-on 提供了多个修饰符，方便我们处理一些 DOM 事件的细节，并且修饰
+        符可以串联使用。主要的修饰符如下。
+        .stop: 等同于调用 event. stopPropagation()。
+        .prevent: 等同于调用 event.preventDefault()。
+        .capture: 使用 capture 模式添加事件监听器。
+        .self: 只当事件是从监听元素本身触发时才触发回调。
+    -->
+
+    <div id="app">
+        <a href="#" v-on:click.stop="doThis"></a>
+        <!--阻止表单默认提交事件-->
+        <form action="" v-on:submit.prevent="onSubmit"></form>
+        <!--阻止默认提交事件且阻止冒泡-->
+        <form action="" v-on:submit.stop.prevent="onSubmit"></form>
+        <!--也可以只有修饰符，闭幕式不绑定事件-->
+        <form action="" v-on:submit.stop.prevent></form>
+    </div>
+</body>
+</html>

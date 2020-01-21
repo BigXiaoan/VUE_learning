@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:class="{'active':isActive}">
+
+        </div>
+    </div>
+
+    <div id="app2">
+        <div class="static" v-bind:class="{'active':isActive,'error':isError}">
+
+        </div>
+    </div>
+
+    <div id="app3">
+        <div :class="classes"></div>
+    </div>
+    
+    <script src="../../../vue.js"></script>
+    <script>
+        //类名active依赖数据isActive，当其为true时，div会拥有类名Active,为false时则没有
+        const app = new Vue({
+            el:'#app',
+            data:{
+                isActive:true
+            }
+        })
+
+       //对象中也可以传入多个属性，来动态切换class，而且:class可以与普通class共存
+        const app2 = new Vue({
+            el:'#app2',
+            data:{
+                isActive:true,
+                isError:false
+            }
+        })
+
+        //当:class的表达式过长或逻辑复杂时，还可以绑定一个计算属性
+        //一般当条件多于两个小时，都可以使用data或computed
+        //使用计算属性示例
+        const app3 = new Vue({
+            el:'#app3',
+            data:{
+                isActive:true,
+                error:null
+            },
+            //除了计算属性，也可以直接绑定一个Object类型的数据，或者使用类似计算属性的methods
+            computed: {
+                classes(){
+                    return{
+                        active:this.isActive && !this.error,
+                        'text-fail':this.error && this.error.type === 'fail'
+                    }
+                }
+                
+            }
+        })
+
+    </script>
+</body>
+</html>

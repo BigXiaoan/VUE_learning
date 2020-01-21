@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组更新</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <template v-for="(book,index) in books">
+                <li>书名：{{book.name}}</li>
+                <li>作者：{{book.author}}</li>
+            </template>
+        </ul>
+    </div>
+    <!-- 
+        Vue 的核心是数据与视图的双向绑定，当我们修改数组时， Vue 会检测到数据变化，所以用
+        v-for 渲染的视图也会立即更新。 Vue 包含了 组观察数组变异的方法，使用它们改变数组也会触发视图更新：
+        • push() 
+        • pop() 
+        • shift() 
+        • unshi 位（）
+        • splice() 
+        • 。此（）
+        • reverse() 
+    -->
+
+
+
+    <script src="../../../vue.js"></script>
+    <script>
+        const app  = new Vue({
+            el:'#app',
+            data:{
+                books:[
+                    {
+                        name:'《Vue.js实战》',
+                        author:'梁灏'
+                    },
+                    {
+                        name:'《JavaScript语言精粹》',
+                        author:'Douglas Crockford'
+                    },
+                    {
+                        name:'《JavaScript高级程序设计》',
+                        author:'Nicholas C.Zakas'
+                    }
+                ]
+            }
+        });
+        //往数组里面添加元素
+        app.books.push(
+            {
+                name:'《css 揭秘》',
+                author:'［希］ Lea Verou'  
+            }
+        );
+
+    //     使用以上方法会改变被这些方法调用的原始数组，有些方法不会改变原数组，例如：
+    //     • filter() 
+    //     • concat() 
+    //     • slice() 
+    //     它们返回的是 个新数组，在使用这些非变异方法时，可以用新数组来替换原数组，还是之
+    //     前展示书目的示例，我们找出含有 JavaScript 关键词的书目，
+    
+    //查找出原数组中name含有JavaScript关键词的书目,重新赋值给原数组,相当于改变了原数组的数据
+        app.books = app.books.filter(function(item){
+            //match:匹配
+            return item.name.match(/JavaScript/);
+        });
+
+        // 需要注意的是，以下变动的数组中， Vue 是不能检测到的，也不会触发视图更新：
+        // • 通过索引直接设置项，比如 app.books[3] = { ... }. 
+        // • 修改数组长度，比如叩p.books.length = 1.
+    </script>
+</body>
+</html>

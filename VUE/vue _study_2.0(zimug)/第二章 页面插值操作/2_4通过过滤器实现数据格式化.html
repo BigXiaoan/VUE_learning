@@ -19,6 +19,10 @@
             所以过滤器可以串接使用：{{数据 | 过滤器A | 过滤器B}}
         -->
         <h2 v-cloak>{{message}}</h2>
+        <!--
+            data-format函数其实有两个参数，第一个参数是实际传入的时间，会调用的时候自动传入，所以我们只需要传入时间格式参数
+                            第二个参数是转换的时间格式
+        -->
         <h2 v-cloak>{{message|data-format('yyyy-mm-dd hh:mm:ss')}}</h2>
     </div>
     <script src="../../vue.js"></script>
@@ -63,6 +67,7 @@
                除了可以定义全局的过滤器，我们还可以定义私有过滤器。但是过滤器这种代码，类似于工具类，我们一般定义为全局的，让它在各个模块、组件里面都可以使用。
 
                */
+              //第一个参数就是时间，会自动传入，
                 dataFormat:function (input,pattern = '') {
                     let dt = new Date(input);
                     //获取年月日

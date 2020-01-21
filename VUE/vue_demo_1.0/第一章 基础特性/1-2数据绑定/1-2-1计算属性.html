@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p v-cloak>{{firstName}}</p>
+        <p v-cloak>{{lastName}}</p>
+        <p v-cloak>{{fullName}}</p>
+
+    </div>
+
+    <div id="el">
+            <p v-cloak>{{cents}}</p>
+            <p v-cloak>{{price}}</p>
+            <p v-cloak>{{get}}</p>
+
+    </div>
+
+    <script src="../../../vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                firstName:'Gavin',
+                lastName:'CLY'
+            },
+            computed:{
+                fullName(){
+                    return this.firstName + ' ' +this.lastName;
+                }
+            }
+        });
+
+        const el = new Vue({
+            el:'#el',
+            data:{
+                cents:100
+            },
+            computed: {
+                price:{
+                    set(newValue){
+                        this.cents = newValue * 100
+                    },
+                    get(){
+                        return (this.cents/100).toFixed(2);
+                    }
+                }
+            }
+        });
+        //这里设置price的值，实质是调用了set函数，也就是将200作为参数传入到set函数中
+        //上面显示price值，实质是调用了get函数，没有参数传入
+        el.price=200;
+       
+
+    </script>
+</body>
+</html>

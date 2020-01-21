@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>基本用法</title>
+  </head>
+  <body>
+    <!-- v-on用于事件绑定上,类似原来JavaScript的onclick等写法, -->
+    <div id="app">
+      点击次数:{{counter}}
+      <button @click="counter++">+1</button>
+      <button @click="counter--">-1</button>
+      <button @click="handleAdd()">+1</button>
+      <button @click="handleAdd(10)">+10</button>
+    </div>
+
+    <script src="../../../vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          counter: 0
+        },
+        methods: {
+          handleAdd(count) {
+            count = count || 1;
+            this.counter += count;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

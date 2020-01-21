@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        v-model 的指令对表单元素进行双向数据绑定，在修改表单元素值的
+        同时，实例 vm 中对应的属性值也同时更新，反之亦然。
+    -->
+    <div id="app">
+        <!--用户输入的内容和 vm.message 直接绑定-->
+        <input type="text" v-model="message"  name="" id="">
+        <h2>{{message}}</h2>
+    </div>
+
+    <script src="../../vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                //这里的值会随着用户的输入传输到h2标签上，展示到页面
+                message:''
+            }
+        })
+    </script>
+</body>
+</html>

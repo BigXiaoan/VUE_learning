@@ -21,7 +21,7 @@
     <div id="app">
       <h2 v-cloak v-bind:class = "{blue:isBlue,red:isRed}">{{message}}</h2>
       <!-- 上面的还可以用方法 -->
-      <!-- v好像我测试用这个方式不行<h2 v-cloak v-bind:class="getH2Class">{{message}}</h2> -->
+      <!-- v好像我测试以方法的方式不行<h2 v-cloak v-bind:class="getH2Class">{{message}}</h2> -->
       <button @click="changeColor">换颜色</button>
     </div>
 

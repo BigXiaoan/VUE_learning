@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断语句</title>
+    <style>
+        [v-cloak]{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <p v-if="status === 1">当status为1时显示该行</p>
+        <p v-else-if="status === 2">当status为2时显示该行</p>
+        <p v-else>否则显示该行</p>
+    </div>
+
+    <div id="app2">
+        <!-- 同样可在Vue.js内置的<template>元素上使用条件指令， -->
+            
+        <template v-if="status === 1">
+            <p>这是一段文本</p>
+            <p>这是一段文本</p>
+            <p>这是一段文本</p>
+        </template>
+    </div>
+
+    <!-- Vue在渲染元素时，出于效率考虑，会尽可能地复用已有的元素而非重新渲染。
+    下面示例 -->
+
+    <div id="app3">
+        <template v-if="type === 'name'">
+            <label >用户名:</label>
+            <input placeholder="输入用户名">
+        </template>
+        <template v-else>
+            <label >邮箱：</label>
+            <input placeholder = "输入邮箱">
+        </template>
+
+        <button v-on:click="handleToggleClick">切换输入类型</button>
+        
+    </div>
+
+    <!---
+        给两个<input>元素都增加Key后，就不会复用了，切换类型时键入的内容也会被删除，
+        不过<label>元素仍然是被复用的，因为没有添加Key属性
+    -->
+    <div id="app4">
+        <template v-if="type === 'name'">
+            <label >用户名:</label>
+            <input placeholder="输入用户名" key="name-input">
+        </template>
+        <template v-else>
+            <label >邮箱：</label>
+            <input placeholder = "输入邮箱" key="email-input">
+        </template>
+
+        <button v-on:click="handleToggleClick">切换输入类型</button>
+    </div>
+
+    <script src="../../../vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                status : 1
+            }
+        })
+
+
+        const app2 = new Vue({
+            el:'#app2',
+            data:{
+                status : 1
+            }
+        })
+
+        const app3 = new Vue({
+            el:'#app3',
+            data:{
+                type:'name'
+            },
+            methods:{
+                //假如没有点击触发该方法，会显示type=name,因为在data设置type=name
+                //当触发该方法时，type=name，所以当type=name时，点击触发该方法，
+                //那么我们就要将它改变为mail改变它的值
+                handleToggleClick(){
+                    //效果：在文本框输入内容后，点击切换按钮，虽然DOM变了
+                    //但是之前在输入框输入的内容并没有改变，只是替换了placeholder的内容
+                    //说明<input>元素被复用
+                    this.type = this.type === 'name' ? 'mail' : 'name'
+                }
+            }
+        })
+
+
+        const app4 = new Vue({
+            el:'#app4',
+            data:{
+                type:'name'
+            },
+            methods:{
+                //如果你不希望DOM元素复用，可以使用Vue.js提供的Key属性，
+                //它可以让你自己决定是否复用元素,key是值必须是唯一的
+                handleToggleClick(){
+                   
+                    this.type = this.type === 'name' ? 'mail' : 'name'
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

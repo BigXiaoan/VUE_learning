@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>家用电器排行榜</h2>
+    <hr color = "orange" size="2"/>
+    <img src="img/tv01.jpg" alt="">
+    索尼KLV-4OR476A 55英寸 &yen;3599.00
+
+    <hr color = "orange" size="2"/>
+    <img src="img/tv02.jpg" alt="">
+    海信LED93247 50英寸 ￥2486.00
+    
+    <hr color = "orange" size="2"/>
+    <img src="img/tv03.jpg" alt="">
+    三星98EAC 60英寸 ￥4777，00
+
+    <hr color = "orange" size="2"/>
+    <img src="img/tv04.jpg" alt="">
+    创维42E5CHR 42英寸 ￥2799.00
+    
+    <hr color = "orange" size="2"/>
+    <img src="img/tv05.jpg" alt="">
+
+    <a href="#girl">女生</a>
+    <a href="#boy">男生</a>
+    <a href="#eye">眼睛</a>
+    <hr color="red">
+
+
+    <h2>
+        <a name="boy">男生</a>
+    </h2>
+
+    <h2>
+        <a name="eye">眼睛</a>
+    </h2>
+
+    <h2>
+        <a name="girl">女生</a>
+    </h2>
+
+    
+    <table border="3" width="500" align = "center">
+            <caption>联系人的地址</caption>
+            <tr>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>地址</th>
+            </tr>
+
+            <tr align="center">
+               <td>
+                   Bill Gates
+               </td>
+               <td>
+                   1235545215
+               </td>
+               <td>
+                   西雅图
+               </td>
+            </tr>
+            
+            <tr align="center">
+                <td align="center">
+                    Steven Jobs
+                </td>
+                <td>
+                    5165125
+                </td>
+
+                <td>
+                    旧金山
+                </td>
+            </tr>
+
+            
+
+    </table>
+
+    <table border="1" width = "500" align="center">
+        <caption>学生成绩表</caption>
+        <tr align="center">
+            <th>编号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>成绩</th>
+        </tr>
+
+        <tr align="center">
+            <td>100</td>
+            <td>潘金莲</td>
+            <td>女</td>
+            <td>80</td>
+        </tr>
+
+        <tr align="center">
+            <td>200</td>
+            <td>武大狼</td>
+            <td>男</td>
+            <td rowspan="2">90</td>
+        </tr>
+
+        <tr align="center">
+            <td>300</td>
+            <td>红太狼</td>
+            <td>女</td>
+        </tr>
+
+        <tr align="center">
+            <td>
+                总成绩
+            </td>
+            <td colspan="3">
+                900
+            </td>
+        </tr>
+    </table>
+
+
+    <form action="server" method="GET">
+        用户名:<input type="text" name = "user" /><br/>
+        密 码：<input type="password" name="pwd" id=""/><br/>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+        
+    </form>
+
+
+    <form action="server" method="get">
+        <table>
+            <tr>
+                <td>
+                    <label for="user">用户名:</label>
+                </td>
+                <td>
+                    <input type="text" name="username" id="user">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="password">密码：</label>
+                </td>
+                <td>
+                    <input type="password" name="pwd" id="pwd">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    性别：
+                </td>
+                <td>
+                    <input type="radio" name="gender" id="" value="男" checked="checked">男
+                    <input type="radio" name="gender" id="" value="女" checked="checked">女
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    爱好
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" id="" value = "游泳">游泳
+                    <input type="checkbox" name="hobby" id="" value = "看书" checked="checked">看书
+                    <input type="checkbox" name="hobby" id="" value = "跳水">跳水
+                    <input type="checkbox" name="hobby" id="" value = "看电影">看电影
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    学历
+                </td>
+
+                <td>
+                    <select name="学历" id="" >
+                        <option value="本科">本科</option>
+                        <option value="中专">中专</option>
+                        <option value="大专">大专</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    照片
+                </td>
+
+                <td>
+                    <input type="file" name="photo" id="" accept="image">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    个人简介
+                </td>
+
+                <td>
+                    <textarea name="" id="" cols="30" rows="10">
+    
+                    </textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="center">
+                    <input type="submit" value="注册"/>
+                    <input type="reset" value="清空"/>
+                    <input type="button" value="普通按钮"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

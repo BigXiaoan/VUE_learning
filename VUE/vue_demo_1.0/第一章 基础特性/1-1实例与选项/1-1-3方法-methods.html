@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div v-cloak id="app">
+        {{a}}
+        <button v-on:click="alert">alert</button>
+        
+        
+    </div>
+    
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                a:1
+            },
+            methods:{
+                //当点击alert按钮的时候，就会有信息框弹出
+                alert(){
+                    alert(this.a)
+                }
+            }
+        })
+
+        /*
+        而 Vue.js 2.0 中废弃了 events 选项属性，不再支持事件广播这类特性，推荐直接使用
+        Vue 实例的全局方法 $on()/$emit()，或者使用插件 Vuex 来处理。
+        */
+    //    const app =  new Vue({
+    //         el:'#app',
+    //         data:{
+    //             a:1
+    //         },   
+    //         events:{
+    //             'event.alert':function(){
+    //                 alert('this is event alert');
+    //             }
+    //         }
+    //     });
+    //     app.this.$emit('event.alert');
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        
+    </div>
+    <script src="../../../vue.js"></script>
+    <script>
+        //总体1.0的生命周期和2.0的生命差别较大，有些东西在2.0用不了，不起作用
+        //下面例子也比较乱，没有输出的，说明在2.0不能用，虽然不报错
+        const vm = new Vue({
+            el:'#app',
+            // init:function(){
+            //     console.log('init');
+            // }
+            //上面是VUE1.0,下面是2.0
+            beforeCreate () {
+                
+                console.log('init');
+            },
+            created:function(){
+                console.log('created');
+            },
+            // beforeCompile:function(){
+            //     console.log('beforeCompile');
+            // },
+            mounted:function(){
+                console.log('mounted');
+            },
+            attached:function(){
+                console.log('attached');
+            },
+            detached:function(){
+                console.log('detached');
+            },
+            beforeDestroy () {
+                console.log('beforeDestroy');
+            },
+            destroyed () {
+                console.log('destroyed');
+            },
+            mounted(){
+                console.log('mounted');
+                this.$destroy ()
+            }
+        })
+    </script>
+
+</body>
+</html>
